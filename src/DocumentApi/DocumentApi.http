@@ -4,3 +4,40 @@ GET {{DocumentApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+### 1. Tạo tài liệu mới (Draft)
+POST {{DocumentApi_HostAddress}}/documents
+Content-Type: application/json
+
+{
+  "title": "Báo cáo tiến độ đồ án tốt nghiệp",
+  "content": "Nội dung chi tiết về hệ thống phân tán .NET 10",
+  "createdBy": "Cường"
+}
+
+###
+
+### 2. Lấy danh sách toàn bộ tài liệu
+GET {{DocumentApi_HostAddress}}/documents
+Accept: application/json
+
+###
+
+### 3. Gửi tài liệu vào quy trình duyệt (Thay thế ID bên dưới bằng ID thực tế nhận được ở bước 1)
+POST {{DocumentApi_HostAddress}}/documents/YOUR_DOCUMENT_ID_HERE/submit
+Content-Type: application/json
+
+{
+  "actor": "Cường",
+  "note": "Gửi quản lý trực tiếp phê duyệt"
+}
+
+###
+
+### 4. Phê duyệt tài liệu
+POST {{DocumentApi_HostAddress}}/documents/YOUR_DOCUMENT_ID_HERE/approve
+Content-Type: application/json
+
+{
+  "actor": "Sếp Tổng",
+  "note": "Đã kiểm tra và đồng ý"
+}
